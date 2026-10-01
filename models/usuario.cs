@@ -1,4 +1,4 @@
-namespace SeuProjeto.Models
+namespace DeckGrain.Models
 {
 public class usuario
 {
