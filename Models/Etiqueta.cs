@@ -1,6 +1,6 @@
 namespace Etiqueta
 {
-    public class Tag
+    public class Etiqueta
     {
         public int Id { get; set; }
         public string Nome { get; set; }
