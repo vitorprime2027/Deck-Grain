@@ -6,7 +6,7 @@ public class usuario
 
     public string Email { get; set; }
 
-    public DateTime Data_Criacao { get; set; }
+    public DateTime DataCriacao { get; set; }
 
     public string Status { get; set; }
 
