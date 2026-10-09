@@ -1,11 +1,14 @@
-namespace Comentarios.Models
+using DeckGrain.Models.Etiqueta;
+using DeckGrain.Models.Post;
+using DeckGrain.Models.Usuario;
+
+namespace DeckGrain.Models.Comentario;
+
+public class Comentario
 {
-    public class Comentario
-    {
-        public Date DataCriacao { get; set; }
-        public Int PostId { get; set; }
-        public Post Post{ get; set; }
-        public Int UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
-    }
+    public usuario DataCriacao { get; set; }
+    public post PostID { get; set; }
+    public post Post { get; set; }
+    public usuario UsuarioID { get; set; }
+    public usuario Usuario { get; set; }
 }

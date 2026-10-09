@@ -1,10 +1,14 @@
-﻿namespace DeckGrain.Models
+﻿using DeckGrain.Models.Comentario;
+using DeckGrain.Models.Etiqueta;
+using DeckGrain.Models.Usuario;
+
+namespace DeckGrain.Models.Post;
+
+public class post
 {
-    public class Post
-    {
-        public string titulo { get; set; }
-        public string descrição { get; set; }
-        public int quantidade_curtidas { get; set; }
-        public string id { get; set; }
-    }
+    public string titulo { get; set; }
+    public string descricao { get; set; }
+    public int PostID { get; set; }
+    public int QuantidadeCurtidas { get; set; }
+    public string ID { get; set; }
 }

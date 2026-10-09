@@ -1,0 +1,30 @@
+CHANGELOG 09/10/2026 - pre-release ver:0.0.11
+
+[==================X===================]
+
+- classe-Post has been added to main
+- few changes to files has been made
+
+{=		NEWS		=}
+
+- A data base for the project is in the works
+- correction:Changelog is still not in main, it contains its own branch still.
+
+
+[==================X====================]
+
+
+
+
+CHANGELOG 06/10/2026 - pre-release ver:0.0.1
+
+[==================X===================]
+
+= classe-usuario added to main
+= classe-comentario added to main
+= classe-etiqueta added to main
+= a chagelog has been added (hooray!)
+
+= fixed:double model folder on main
+
+[==================X====================]
