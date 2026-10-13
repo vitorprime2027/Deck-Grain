@@ -2,9 +2,9 @@
 {
     public class Post
     {
-        public string titulo { get; set; }
-        public string descrição { get; set; }
-        public int quantidade_curtidas { get; set; }
-        public string id { get; set; }
+        public int PostId { get; set; }
+        public string Titulo { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
+        public int QuantidadeCurtidas { get; set; }
     }
 }
