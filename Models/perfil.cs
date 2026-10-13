@@ -1,10 +1,10 @@
 ﻿namespace DeckGrain.Models
 {
-    public class perfil
+    public class Perfil
     {
-        public int PerfilID { get; set; }
-        public string Nome { get; set; }
-        public string Biografia { get; set; }
-        public string LinguagemPreferida{ get; set; }
+        public int PerfilId { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string Biografia { get; set; } = string.Empty;
+        public string LinguagemPreferida { get; set; } = string.Empty;
     }
 }
