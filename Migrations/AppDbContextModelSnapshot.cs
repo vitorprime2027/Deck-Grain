@@ -66,6 +66,27 @@ namespace DeckGrain.Migrations
                     b.ToTable("Etiquetas");
                 });
 
+            modelBuilder.Entity("DeckGrain.Models.Notificacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("Lido")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Mensagem")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notificacoes");
+                });
+
             modelBuilder.Entity("DeckGrain.Models.Perfil", b =>
                 {
                     b.Property<int>("PerfilId")

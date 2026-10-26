@@ -13,5 +13,6 @@ namespace DeckGrain.Data
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Etiqueta> Etiquetas { get; set; }
+        public DbSet<Notificacao> Notificacoes { get; set; }
     }
 }
