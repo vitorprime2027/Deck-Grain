@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DeckGrain.Models.Post>
+<h1>Lista de Pessoas</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>PostId</th>
+            <th>Titulo</th>
+            <th>Descricao</th>
+            <th>QuantidadeCurtidas</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PostId</td>
+                <td>@item.Titulo</td>
+                <td>@item.Descricao</td>
+                <td>@item.QuantidadeCurtidas</td>
+            </tr>
+        }
+    </tbody>
+</table>
