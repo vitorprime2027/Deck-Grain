@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DeckGrain.Models.Perfil>
+<h1>Lista de Perfis</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>PerfilId</th>
+            <th>Nome</th>
+            <th>Biografia</th>
+            <th>LinguagemPreferida</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PerfilId</td>
+                <td>@item.Nome</td>
+                <td>@item.Biografia</td>
+                <td>@item.LinguagemPreferida</td>
+            </tr>
+        }
+    </tbody>
+</table>
