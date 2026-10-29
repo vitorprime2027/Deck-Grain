@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DeckGrain.Models.Usuario>
+<h1>Lista de usuarios</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>UsuarioId</th>
+            <th>Senha</th>
+            <th>Email</th>
+            <th>DataCriacao</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UsuarioId</td>
+                <td>@item.Senha</td>
+                <td>@item.Email</td>
+                <td>@item.DataCriacao</td>
+                <td>@item.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
