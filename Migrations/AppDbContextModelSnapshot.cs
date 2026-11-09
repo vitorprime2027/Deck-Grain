@@ -47,6 +47,20 @@ namespace DeckGrain.Migrations
                     b.ToTable("Comentarios");
                 });
 
+            modelBuilder.Entity("DeckGrain.Models.Configuracao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<bool>("ModoNoturno")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Configuracoes");
+                });
+
             modelBuilder.Entity("DeckGrain.Models.Etiqueta", b =>
                 {
                     b.Property<int>("Id")

@@ -1,6 +1,6 @@
-namespace SeuProjeto.Models
+namespace DeckGrain.Models
 {
-    public class Animal
+    public class Configuracao
 {
         public int Id { get; set; }
         public bool ModoNoturno { get; set; }

@@ -14,5 +14,6 @@ namespace DeckGrain.Data
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Etiqueta> Etiquetas { get; set; }
         public DbSet<Notificacao> Notificacoes { get; set; }
+        public DbSet<Configuracao> Configuracoes { get; set; }
     }
 }
