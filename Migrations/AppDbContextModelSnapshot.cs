@@ -119,7 +119,12 @@ namespace DeckGrain.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("PerfilId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Perfis");
                 });
@@ -187,6 +192,17 @@ namespace DeckGrain.Migrations
                         .IsRequired();
 
                     b.Navigation("Post");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("DeckGrain.Models.Perfil", b =>
+                {
+                    b.HasOne("DeckGrain.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Usuario");
                 });
