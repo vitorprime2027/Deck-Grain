@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using DeckGrain.Data;
 namespace DeckGrain.Controllers
 {
@@ -11,7 +12,7 @@ namespace DeckGrain.Controllers
         }
         public IActionResult Index()
         {
-            var lista = _context.Perfis.ToList();
+            var lista = _context.Perfis.Include(p => p.Usuario).ToList();
             return View(lista);
         }
     }
