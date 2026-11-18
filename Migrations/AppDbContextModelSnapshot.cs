@@ -167,7 +167,12 @@ namespace DeckGrain.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("UsuariosUsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("UsuarioId");
+
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Usuarios");
                 });
@@ -189,6 +194,17 @@ namespace DeckGrain.Migrations
                     b.Navigation("Post");
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("DeckGrain.Models.Usuario", b =>
+                {
+                    b.HasOne("DeckGrain.Models.Usuario", "Usuarios")
+                        .WithMany()
+                        .HasForeignKey("UsuariosUsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
         }
