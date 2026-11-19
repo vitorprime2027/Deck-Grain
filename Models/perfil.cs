@@ -6,5 +6,7 @@
         public string Nome { get; set; } = string.Empty;
         public string Biografia { get; set; } = string.Empty;
         public string LinguagemPreferida { get; set; } = string.Empty;
+        public int UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; }
     }
 }
