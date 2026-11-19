@@ -9,6 +9,7 @@ namespace DeckGrain.Data
         {
         }
         public DbSet<Usuario> Usuarios { get; set; }
+
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }

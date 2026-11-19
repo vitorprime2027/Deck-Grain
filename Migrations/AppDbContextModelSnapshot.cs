@@ -11,7 +11,7 @@ namespace DeckGrain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
-    {
+    { 
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
@@ -172,7 +172,12 @@ namespace DeckGrain.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("UsuariosUsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("UsuarioId");
+
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Usuarios");
                 });
@@ -205,6 +210,7 @@ namespace DeckGrain.Migrations
                         .IsRequired();
 
                     b.Navigation("Usuario");
+                    main
                 });
 #pragma warning restore 612, 618
         }

@@ -11,6 +11,8 @@ public class Usuario
         public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
 
         public string Status { get; set; } = string.Empty;
+
+        public Usuario? Usuarios { get; set; }
     }
 }
 //esse comentario vai salvar a humanidade
