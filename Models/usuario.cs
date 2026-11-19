@@ -12,7 +12,7 @@ public class Usuario
 
         public string Status { get; set; } = string.Empty;
 
-        public Usuario? Usuarios { get; set; }
+        public Perfil? Perfil { get; set; }
     }
 }
 //esse comentario vai salvar a humanidade
