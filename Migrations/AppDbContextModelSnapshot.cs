@@ -11,7 +11,7 @@ namespace DeckGrain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
-    { 
+    {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
@@ -124,7 +124,8 @@ namespace DeckGrain.Migrations
 
                     b.HasKey("PerfilId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("UsuarioId")
+                        .IsUnique();
 
                     b.ToTable("Perfis");
                 });
@@ -172,12 +173,7 @@ namespace DeckGrain.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UsuariosUsuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("UsuarioId");
-
-                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Usuarios");
                 });
@@ -204,13 +200,17 @@ namespace DeckGrain.Migrations
             modelBuilder.Entity("DeckGrain.Models.Perfil", b =>
                 {
                     b.HasOne("DeckGrain.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
+                        .WithOne("Perfil")
+                        .HasForeignKey("DeckGrain.Models.Perfil", "UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Usuario");
-                    main
+                });
+
+            modelBuilder.Entity("DeckGrain.Models.Usuario", b =>
+                {
+                    b.Navigation("Perfil");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeckGrain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261117234319_RelacionaUsuarioPerfil")]
-    partial class RelacionaUsuarioPerfil
+    [Migration("20261119190943_AjustaRelacionamentoUsuarioPerfil")]
+    partial class AjustaRelacionamentoUsuarioPerfil
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -122,7 +122,13 @@ namespace DeckGrain.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("PerfilId");
+
+                    b.HasIndex("UsuarioId")
+                        .IsUnique();
 
                     b.ToTable("Perfis");
                 });
@@ -170,12 +176,7 @@ namespace DeckGrain.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UsuariosUsuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("UsuarioId");
-
-                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Usuarios");
                 });
@@ -199,15 +200,20 @@ namespace DeckGrain.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("DeckGrain.Models.Usuario", b =>
+            modelBuilder.Entity("DeckGrain.Models.Perfil", b =>
                 {
-                    b.HasOne("DeckGrain.Models.Usuario", "Usuarios")
-                        .WithMany()
-                        .HasForeignKey("UsuariosUsuarioId")
+                    b.HasOne("DeckGrain.Models.Usuario", "Usuario")
+                        .WithOne("Perfil")
+                        .HasForeignKey("DeckGrain.Models.Perfil", "UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Usuarios");
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("DeckGrain.Models.Usuario", b =>
+                {
+                    b.Navigation("Perfil");
                 });
 #pragma warning restore 612, 618
         }
