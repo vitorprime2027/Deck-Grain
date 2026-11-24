@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DeckGrain.Models.Comentario>
+<h1>Lista de Comentários</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Conteudo</th>
+            <th>DataCriacao</th>
+            <th>PostId</th>
+            <th>UsuarioId</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Conteudo</td>
+                <td>@item.DataCriacao</td>
+                <td>@item.PostId</td>
+                <td>@item.UsuarioId</td>
+            </tr>
+        }
+    </tbody>
+</table>
