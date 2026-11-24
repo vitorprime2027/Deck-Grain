@@ -1,12 +1,21 @@
 ﻿@model IEnumerable<DeckGrain.Models.Post>
-<h1>Lista de Pessoas</h1>
+
+<h1>Lista de Posts</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Post</a>
+</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>PostId</th>
-            <th>Titulo</th>
-            <th>Descricao</th>
-            <th>QuantidadeCurtidas</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Curtidas</th>
+            <th>Autor (Perfil)</th>
+            <th>Etiquetas</th>
+            <th>Comentários</th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +26,14 @@
                 <td>@item.Titulo</td>
                 <td>@item.Descricao</td>
                 <td>@item.QuantidadeCurtidas</td>
+                <td>@item.Perfil?.Nome</td>
+                <td>
+                    @foreach (var tag in item.Etiquetas)
+                    {
+                        <span class="badge" style="background-color: @tag.Cor; color: #fff;">@tag.Nome</span>
+                    }
+                </td>
+                <td>@item.Comentarios.Count</td>
             </tr>
         }
     </tbody>

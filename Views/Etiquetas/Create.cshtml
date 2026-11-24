@@ -1,0 +1,18 @@
+﻿@model DeckGrain.Models.Etiqueta
+
+<h1>Criar Nova Etiqueta</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Nome" class="form-label">Nome da Etiqueta</label>
+        <input asp-for="Nome" class="form-control" placeholder="Ex: C#, Python, Dúvida" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Cor" class="form-label">Cor da Etiqueta</label>
+        <input asp-for="Cor" type="color" class="form-control form-control-color" value="#0d6efd" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar Etiqueta</button>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</form>

@@ -1,0 +1,26 @@
+﻿@model DeckGrain.Models.Usuario
+
+<h1>Cadastrar Novo Usuário</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">E-mail</label>
+        <input asp-for="Email" type="email" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Senha" class="form-label">Senha</label>
+        <input asp-for="Senha" type="password" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label">Status</label>
+        <select asp-for="Status" class="form-select">
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar Usuário</button>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</form>

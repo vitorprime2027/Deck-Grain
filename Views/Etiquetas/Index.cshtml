@@ -1,20 +1,30 @@
 ﻿@model IEnumerable<DeckGrain.Models.Etiqueta>
+
 <h1>Lista de Etiquetas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nova Etiqueta</a>
+</p>
+
 <table class="table">
     <thead>
         <tr>
-            <th>Nome</th>
             <th>Id</th>
-            <th>Cor</th>
+            <th>Nome</th>
+            <th>Prévia</th>
+            <th>Posts Vinculados</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Nome</td>
                 <td>@item.Id</td>
-                <td>@item.Cor</td>
+                <td>@item.Nome</td>
+                <td>
+                    <span class="badge" style="background-color: @item.Cor; color: #fff;">@item.Nome</span>
+                </td>
+                <td>@item.Posts.Count</td>
             </tr>
         }
     </tbody>
