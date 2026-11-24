@@ -2,7 +2,47 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .hero-home {
+        margin-top: 4.5rem; /* Abaixa o bloco todo na tela */
+    }
+
+    .logo-placeholder {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 1.5rem auto; /* Centraliza e dá espaço antes do Welcome */
+        background-color: #EFE6DB;
+        border: 2px solid #B08E6B; /* Mudei de dashed (tracejada) para solid (contínua) */
+        border-radius: 50%; /* Deixa redondo (mude para 12px se quiser quadrado) */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .titulo-welcome {
+        color: #7A5C3E;
+        font-weight: 600;
+    }
+
+    .link-home {
+        color: #8C6D4F;
+        font-weight: 600;
+    }
+</style>
+
+<div class="text-center hero-home">
+    <!-- Espaço reservado para a Logo -->
+    <div class="logo-placeholder">
+        <img src="~/images/DECK_GRAIN_LOGO_3.png" alt="Logo DeckGrain" />
+    </div>
+
+    <h1 class="display-4 titulo-welcome">Bem vindo ao Deck Grain</h1>
+    <p>Learn about <a href="https://microsoft.com" class="link-home">building Web apps with ASP.NET Core</a>.</p>
 </div>
