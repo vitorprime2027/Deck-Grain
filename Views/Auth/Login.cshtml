@@ -3,6 +3,83 @@
     ViewData["Title"] = "Login";
 }
 
+<style>
+    body {
+        background-color: #DAC8B3;
+        color: #3E2F20;
+    }
+
+    .card {
+        background-color: #EFE6DB;
+        border: 2px solid #B08E6B;
+    }
+
+    .card-title {
+        color: #7A5C3E;
+        font-weight: 600;
+    }
+
+    .form-control {
+        border-color: #B08E6B;
+        background-color: #FAF6F1;
+    }
+
+        .form-control:focus {
+            border-color: #8C6D4F;
+            box-shadow: 0 0 0 0.25rem rgba(176, 142, 107, 0.35);
+        }
+
+    .form-check-input {
+        border-color: #B08E6B;
+        background-color: #FAF6F1;
+    }
+
+        .form-check-input:checked {
+            background-color: #B08E6B;
+            border-color: #B08E6B;
+        }
+
+        .form-check-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(176, 142, 107, 0.35);
+        }
+
+    .btn-toggle-custom {
+        border-color: #B08E6B;
+        color: #7A5C3E;
+        background-color: #E6D8C8;
+    }
+
+        .btn-toggle-custom:hover {
+            background-color: #B08E6B;
+            border-color: #B08E6B;
+            color: #FFFFFF;
+        }
+
+    .btn-custom {
+        background-color: #B08E6B;
+        border-color: #B08E6B;
+        color: #FFFFFF;
+        font-weight: 500;
+    }
+
+        .btn-custom:hover:not(:disabled) {
+            background-color: #967656;
+            border-color: #967656;
+            color: #FFFFFF;
+        }
+
+    .link-custom {
+        color: #8C6D4F;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        .link-custom:hover {
+            color: #6B5036;
+            text-decoration: underline;
+        }
+</style>
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-5">
@@ -32,7 +109,7 @@
                             <label asp-for="Senha" class="form-label">Senha</label>
                             <div class="input-group">
                                 <input asp-for="Senha" type="password" class="form-control" id="inputSenhaLogin" placeholder="Digite sua senha" required />
-                                <button class="btn btn-outline-secondary" type="button" id="btnToggleSenha">
+                                <button class="btn btn-toggle-custom" type="button" id="btnToggleSenha">
                                     Mostrar
                                 </button>
                             </div>
@@ -47,13 +124,13 @@
 
                         <!-- Botão Entrar -->
                         <div class="d-grid mt-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-custom">
                                 Entrar
                             </button>
                         </div>
 
                         <div class="text-center mt-3">
-                            <small>Ainda não tem uma conta? <a asp-controller="Auth" asp-action="Cadastro">Cadastre-se</a></small>
+                            <small>Ainda não tem uma conta? <a asp-controller="Auth" asp-action="Cadastro" class="link-custom">Cadastre-se</a></small>
                         </div>
                     </form>
                 </div>
@@ -66,11 +143,11 @@
     <partial name="_ValidationScriptsPartial" />
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const inputSenha = document.getElementById("inputSenhaLogin");
             const btnToggle = document.getElementById("btnToggleSenha");
 
-            btnToggle.addEventListener("click", function () {
+            btnToggle.addEventListener("click", function() {
                 const isPassword = inputSenha.type === "password";
                 inputSenha.type = isPassword ? "text" : "password";
                 btnToggle.textContent = isPassword ? "Ocultar" : "Mostrar";

@@ -3,6 +3,68 @@
     ViewData["Title"] = "Cadastro";
 }
 
+<style>
+    body {
+        background-color: #DAC8B3;
+        color: #3E2F20;
+    }
+
+    .card {
+        background-color: #EFE6DB; /* Tom mais claro derivado do #DAC8B3 para dar contraste ao formulário */
+        border: 2px solid #B08E6B;
+    }
+
+    .card-title {
+        color: #7A5C3E;
+        font-weight: 600;
+    }
+
+    .form-control {
+        border-color: #B08E6B;
+        background-color: #FAF6F1;
+    }
+
+        .form-control:focus {
+            border-color: #8C6D4F;
+            box-shadow: 0 0 0 0.25rem rgba(176, 142, 107, 0.35);
+        }
+
+    .painel-senha {
+        background-color: #E6D8C8 !important;
+        border-color: #B08E6B !important;
+    }
+
+    .btn-custom {
+        background-color: #B08E6B;
+        border-color: #B08E6B;
+        color: #FFFFFF;
+        font-weight: 500;
+    }
+
+        .btn-custom:hover:not(:disabled) {
+            background-color: #967656;
+            border-color: #967656;
+            color: #FFFFFF;
+        }
+
+        .btn-custom:disabled {
+            background-color: #C7B29B;
+            border-color: #C7B29B;
+            color: #FFFFFF;
+        }
+
+    .link-custom {
+        color: #8C6D4F;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        .link-custom:hover {
+            color: #6B5036;
+            text-decoration: underline;
+        }
+</style>
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -41,7 +103,7 @@
                             <span asp-validation-for="Senha" class="text-danger small"></span>
 
                             <!-- Painel de Validação em Tempo Real -->
-                            <div class="mt-2 p-2 bg-light rounded border">
+                            <div class="mt-2 p-2 rounded border painel-senha">
                                 <small class="text-muted d-block mb-1 fw-bold">A senha deve conter:</small>
                                 <ul class="list-unstyled mb-0 small" id="requisitosSenha">
                                     <li id="req-tamanho" class="text-danger">
@@ -59,13 +121,13 @@
 
                         <!-- Botão Cadastrar -->
                         <div class="d-grid mt-4">
-                            <button type="submit" class="btn btn-primary" id="btnCadastrar" disabled>
+                            <button type="submit" class="btn btn-custom" id="btnCadastrar" disabled>
                                 Cadastrar
                             </button>
                         </div>
 
                         <div class="text-center mt-3">
-                            <small>Já tem uma conta? <a asp-controller="Auth" asp-action="Login">Fazer login</a></small>
+                            <small>Já tem uma conta? <a asp-controller="Auth" asp-action="Login" class="link-custom">Fazer login</a></small>
                         </div>
                     </form>
                 </div>
