@@ -32,17 +32,17 @@ namespace DeckGrain.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("PostId")
+                    b.Property<int>("PerfilId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UsuarioId")
+                    b.Property<int>("PostId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PostId");
+                    b.HasIndex("PerfilId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("PostId");
 
                     b.ToTable("Comentarios");
                 });
@@ -56,7 +56,13 @@ namespace DeckGrain.Migrations
                     b.Property<bool>("ModoNoturno")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId")
+                        .IsUnique();
 
                     b.ToTable("Configuracoes");
                 });
@@ -96,7 +102,12 @@ namespace DeckGrain.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("PerfilId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PerfilId");
 
                     b.ToTable("Notificacoes");
                 });
@@ -140,6 +151,9 @@ namespace DeckGrain.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("PerfilId")
+                        .HasColumnType("int");
+
                     b.Property<int>("QuantidadeCurtidas")
                         .HasColumnType("int");
 
@@ -148,6 +162,8 @@ namespace DeckGrain.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("PostId");
+
+                    b.HasIndex("PerfilId");
 
                     b.ToTable("Posts");
                 });
@@ -178,23 +194,60 @@ namespace DeckGrain.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("EtiquetaPost", b =>
+                {
+                    b.Property<int>("EtiquetasId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostsPostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EtiquetasId", "PostsPostId");
+
+                    b.HasIndex("PostsPostId");
+
+                    b.ToTable("EtiquetaPost");
+                });
+
             modelBuilder.Entity("DeckGrain.Models.Comentario", b =>
                 {
+                    b.HasOne("DeckGrain.Models.Perfil", "Perfil")
+                        .WithMany("Comentarios")
+                        .HasForeignKey("PerfilId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("DeckGrain.Models.Post", "Post")
-                        .WithMany()
+                        .WithMany("Comentarios")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Perfil");
+
+                    b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("DeckGrain.Models.Configuracao", b =>
+                {
                     b.HasOne("DeckGrain.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
+                        .WithOne("Configuracao")
+                        .HasForeignKey("DeckGrain.Models.Configuracao", "UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Post");
-
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("DeckGrain.Models.Notificacao", b =>
+                {
+                    b.HasOne("DeckGrain.Models.Perfil", "Perfil")
+                        .WithMany("Notificacoes")
+                        .HasForeignKey("PerfilId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Perfil");
                 });
 
             modelBuilder.Entity("DeckGrain.Models.Perfil", b =>
@@ -208,8 +261,50 @@ namespace DeckGrain.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("DeckGrain.Models.Post", b =>
+                {
+                    b.HasOne("DeckGrain.Models.Perfil", "Perfil")
+                        .WithMany("Posts")
+                        .HasForeignKey("PerfilId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Perfil");
+                });
+
+            modelBuilder.Entity("EtiquetaPost", b =>
+                {
+                    b.HasOne("DeckGrain.Models.Etiqueta", null)
+                        .WithMany()
+                        .HasForeignKey("EtiquetasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DeckGrain.Models.Post", null)
+                        .WithMany()
+                        .HasForeignKey("PostsPostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DeckGrain.Models.Perfil", b =>
+                {
+                    b.Navigation("Comentarios");
+
+                    b.Navigation("Notificacoes");
+
+                    b.Navigation("Posts");
+                });
+
+            modelBuilder.Entity("DeckGrain.Models.Post", b =>
+                {
+                    b.Navigation("Comentarios");
+                });
+
             modelBuilder.Entity("DeckGrain.Models.Usuario", b =>
                 {
+                    b.Navigation("Configuracao");
+
                     b.Navigation("Perfil");
                 });
 #pragma warning restore 612, 618

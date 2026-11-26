@@ -1,0 +1,27 @@
+﻿@model DeckGrain.Models.Comentario
+
+<h1>Novo Comentário</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="PostId" class="form-label">Post</label>
+        <select asp-for="PostId" class="form-select" asp-items="ViewBag.Posts" required>
+            <option value="">-- Selecione o Post --</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PerfilId" class="form-label">Autor (Perfil)</label>
+        <select asp-for="PerfilId" class="form-select" asp-items="ViewBag.Perfis" required>
+            <option value="">-- Selecione seu Perfil --</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Conteudo" class="form-label">Comentário</label>
+        <textarea asp-for="Conteudo" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Publicar Comentário</button>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</form>

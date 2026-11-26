@@ -8,13 +8,23 @@ namespace DeckGrain.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-        public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Etiqueta> Etiquetas { get; set; }
         public DbSet<Notificacao> Notificacoes { get; set; }
         public DbSet<Configuracao> Configuracoes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Comentario>()
+                .HasOne(c => c.Perfil)
+                .WithMany(p => p.Comentarios)
+                .HasForeignKey(c => c.PerfilId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

@@ -1,13 +1,19 @@
 ﻿@model IEnumerable<DeckGrain.Models.Comentario>
+
 <h1>Lista de Comentários</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Comentário</a>
+</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Conteudo</th>
-            <th>DataCriacao</th>
-            <th>PostId</th>
-            <th>UsuarioId</th>
+            <th>Conteúdo</th>
+            <th>Post</th>
+            <th>Autor (Perfil)</th>
+            <th>Data</th>
         </tr>
     </thead>
     <tbody>
@@ -16,9 +22,9 @@
             <tr>
                 <td>@item.Id</td>
                 <td>@item.Conteudo</td>
-                <td>@item.DataCriacao</td>
-                <td>@item.PostId</td>
-                <td>@item.UsuarioId</td>
+                <td>@item.Post?.Titulo</td>
+                <td>@item.Perfil?.Nome</td>
+                <td>@item.DataCriacao.ToString("dd/MM/yyyy HH:mm")</td>
             </tr>
         }
     </tbody>

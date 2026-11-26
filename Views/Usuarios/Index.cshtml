@@ -1,14 +1,20 @@
 ﻿@model IEnumerable<DeckGrain.Models.Usuario>
-<h1>Lista de usuarios</h1>
+
+<h1>Lista de Usuários</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Usuário</a>
+</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>UsuarioId</th>
-            <th>Senha</th>
-            <th>Email</th>
-            <th>DataCriacao</th>
+            <th>E-mail</th>
             <th>Status</th>
-            <th>Perfil</th>
+            <th>Data de Criação</th>
+            <th>Perfil Vinculado</th>
+            <th>Modo Noturno</th>
         </tr>
     </thead>
     <tbody>
@@ -16,11 +22,11 @@
         {
             <tr>
                 <td>@item.UsuarioId</td>
-                <td>@item.Senha</td>
                 <td>@item.Email</td>
-                <td>@item.DataCriacao</td>
                 <td>@item.Status</td>
-                <td>@item.Perfil</td>
+                <td>@item.DataCriacao.ToString("dd/MM/yyyy")</td>
+                <td>@(item.Perfil?.Nome ?? "Sem perfil")</td>
+                <td>@(item.Configuracao?.ModoNoturno == true ? "Ativado" : "Desativado")</td>
             </tr>
         }
     </tbody>

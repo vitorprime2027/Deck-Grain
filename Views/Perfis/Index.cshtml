@@ -1,13 +1,19 @@
 ﻿@model IEnumerable<DeckGrain.Models.Perfil>
+
 <h1>Lista de Perfis</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Perfil</a>
+</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>PerfilId</th>
             <th>Nome</th>
             <th>Biografia</th>
-            <th>LinguagemPreferida</th>
-            <th>E-mail do usuário</th>
+            <th>Linguagem Preferida</th>
+            <th>E-mail do Usuário</th>
         </tr>
     </thead>
     <tbody>
